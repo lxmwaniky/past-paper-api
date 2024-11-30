@@ -51,4 +51,36 @@ router.get('/:unitCode', async (req, res) => {
     }
 });
 
+router.put('/:unitCode/:yearTaken', async (req, res) => {
+    try {
+        const paper = await Paper.findOne({ unitCode: req.params.unitCode, yearTaken: req.params.yearTaken });
+        if (!paper) return res.status(404).json({ message: 'Paper NOT found' });
+
+        const { unitCode, yearTaken, unitTitle, fileLocation, classOfStudy } = req.body;
+
+        paper.unitCode = unitCode || paper.unitCode;
+        paper.yearTaken = yearTaken || paper.yearTaken;
+        paper.unitTitle = unitTitle || paper.unitTitle;
+        paper.fileLocation = fileLocation || paper.fileLocation;
+        paper.classOfStudy = classOfStudy || paper.classOfStudy;
+
+        const updatedPaper = await paper.save();
+        res.status(200).json(updatedPaper);
+    } catch (e) {
+        res.status(400).json({ message: e.message });
+    }
+});
+
+router.delete('/:unitCode/:yearTaken', async (req, res) => {
+    try {
+        const paper = await Paper.findOne({ unitCode: req.params.unitCode, yearTaken: req.params.yearTaken });
+        if (!paper) return res.status(404).json({ message: 'Paper NOT found' });
+
+        await paper.remove();
+        res.status(200).json({ message: 'Paper deleted successfully' });
+    } catch (e) {
+        res.status(400).json({ message: e.message });
+    }
+});
+
 module.exports = router;
