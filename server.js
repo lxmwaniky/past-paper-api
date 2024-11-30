@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const papersRouter = require('./routers/papers')
 require('dotenv').config();
 const api = process.env.API_URL
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 
 app.use(cors())
 app.options('*', cors())

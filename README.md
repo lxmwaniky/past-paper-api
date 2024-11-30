@@ -32,7 +32,7 @@ To get started, you'll need the following installed on your machine:
 
 3. Create a `.env` file in the root of the project and add the following environment variables:
    ```env
-    PORT=8080
+    PORT=3000
     CONNECTION_STRING=<Your MONGO-DB CONNECTION URL>
     API_KEY=/api/v1
     ```
@@ -47,18 +47,18 @@ To get started, you'll need the following installed on your machine:
 The API provides the following endpoints:
 
 - `GET /api/v1/papers`: Fetch all papers
-- `GET /api/v1/papers/:unitCode/:year`: Fetch a specific paper by unit code and year
+- `GET /api/v1/papers/:unitCode/:yearTaken`: Fetch a specific paper by unit code and year
 - `GET /api/v1/papers/:unitCode`: Fetch all papers for a specific unit code
 - `POST /api/v1/papers`: Add a new paper
-- `PUT /api/v1/papers/:id`: Update a paper
-- `DELETE /api/v1/papers/:id`: Delete a paper
+- `PUT /api/v1/papers/:unitCode/:yearTaken`: Update a paper
+- `DELETE /api/v1/papers/:unitCode/:yearTaken`: Delete a paper
 
 ## Running Tests
 
 To run the tests, use the following command:
 
 ```bash
-npm test
+npm run test
 ```
 
 ## Technologies Used
