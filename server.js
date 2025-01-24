@@ -17,7 +17,7 @@ app.use(morgan('tiny'))
 app.use('', statusRouter);
 app.use(`${api}/papers`, papersRouter);
 
-mongoose.connect(process.env.CONNECTION_STRING).then(()=> console.log('Connected')).catch((e) => console.log(e.message))
+// mongoose.connect(process.env.CONNECTION_STRING).then(()=> console.log('Connected')).catch((e) => console.log(e.message))
 
 app.listen(port, (req, res) => {
     console.log(`Server is running on http://localhost:${port}`);
