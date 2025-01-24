@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose')
 const papersRouter = require('./routers/papers')
+const statusRouter = require('./routers/status')
 require('dotenv').config();
 const api = process.env.API_URL
 const port = process.env.PORT || 3000
@@ -13,6 +14,7 @@ app.use(cors())
 app.options('*', cors())
 app.use(bodyParser.json())
 app.use(morgan('tiny'))
+app.use('', statusRouter);
 app.use(`${api}/papers`, papersRouter);
 
 mongoose.connect(process.env.CONNECTION_STRING).then(()=> console.log('Connected')).catch((e) => console.log(e.message))

@@ -34,7 +34,7 @@ To get started, you'll need the following installed on your machine:
    ```env
     PORT=3000
     CONNECTION_STRING=<Your MONGO-DB CONNECTION URL>
-    API_KEY=/api/v1
+    API_URL=/api/v1
     ```
 
 4. Start the server:
